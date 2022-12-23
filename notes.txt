@@ -1,0 +1,26 @@
+1 - The player class is just a default of 10hp and 100mp, and they can onlt lose 1hp per hit against weak opponents, medium difficulty opponents cause 2hp damage, and hard opponents cause 4hp damage. BOSS opponents shall be separate
+
+1.1 - need to work on an rng to determine how much damage the player does to the opponent
+fundamentally it should be like this:
+() - generate a random number from 0-18
+() - anything from 0-5 means low damage (about 8% of the enemy's current hp)
+() - anything from 6-11 means moderate damage (about 14% of the enemy's hp)
+() - anything from 12-17 means high damage (about 18% of the enemy's hp)
+() - 18 is a crit hit and does 50% damage to the enemy
+these ranges may vary
+
+1.2 - might make it so that any boss can one hit the player if a certain number (probably 69) is generated form the rng.
+
+1.3 - the rng shall generate a number from the range 0-100:
+() - 69 does the one hit
+() - 0-40 shall just be 15-20% of the players hp, 40-69 will do 35%, and anything above 60 does 40%
+() easy and medium bosses can do all 3 whereas hard bosses can only do heavy hits and the one hit, so the range for hard bosses shall be limited to 40-100, but to keep it fair the boss shall have a 50% of missing the attack (and the player also has the option to dodge an attack)
+
+2 - need to work on a code to allow the player to regen hp.
+(and a code to allow the player to restart from checkpoints) -- chucking this idea for another time
+
+3 - There should be any amount of opponents, but for now lets limit it to 14: 3 easy, 3 medium, 3 hard, and 5 bosses
+
+4 - the game shall be progressive, so no rng needed to decide the opponent the player faces
+
+5 - hp regen potion should restore 50% of "lost" hp (this may vary in the future), no need for a mana bar now (just leave it as mp: magic power).

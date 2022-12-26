@@ -1,7 +1,7 @@
 WIP:
 
 2 - need to work on a code to allow the player to regen hp.
-(and a code to allow the player to restart from checkpoints) -- chucking this idea for another time as this game will be short
+(and a code to allow the player to restart from checkpoints) -- chucking this idea for another time
 
 4 - the game shall be progressive, so no rng needed to decide the opponent the player faces
 
@@ -9,6 +9,7 @@ WIP:
 
 6 - *important* - When facing certain bosses, the setting has to be in accordance with the background of that boss (e.g. Ceuthonymus is a creature that lives in water)
 
+7 - need to figure out a method to deal damage to both the enemy and player, while alternating turns
 
 
 FINISHED:

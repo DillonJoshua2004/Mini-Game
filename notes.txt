@@ -8,7 +8,7 @@ WIP:
 
 5 - hp regen potion should restore 50% of "lost" hp (this may vary in the future), no need for a mana bar now (just leave it as mp: magic power).
 
-6 - *important* - When facing certain bosses, the setting has to be in accordance with the background of that boss (e.g. Ceuthonymus is a creature that lives in water)
+6 - *important* - When facing certain enemies, the setting has to be in accordance with the background of that enemy (e.g. Ceuthonymus is a creature that lives in water)
 
 7 - need to figure out a method to deal damage to both the enemy and player, while alternating turns
 

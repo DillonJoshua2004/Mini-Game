@@ -1,4 +1,5 @@
 WIP:
+# for the background of some of the enemies read " https://en.wikipedia.org/wiki/List_of_Greek_mythological_creatures?adlt=strict&toWww=1&redig=E8A7C8D13BE94C319F6E1D7C38FC7C43 " for writing the story
 
 2 - need to work on a code to allow the player to regen hp.
 (and a code to allow the player to restart from checkpoints) -- chucking this idea for another time

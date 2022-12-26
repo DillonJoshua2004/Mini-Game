@@ -1,7 +1,7 @@
 WIP:
 
 2 - need to work on a code to allow the player to regen hp.
-(and a code to allow the player to restart from checkpoints) -- chucking this idea for another time
+(and a code to allow the player to restart from checkpoints) -- chucking this idea for another time as this game will be short
 
 4 - the game shall be progressive, so no rng needed to decide the opponent the player faces
 

@@ -12,6 +12,7 @@ WIP:
 
 7 - need to figure out a method to deal damage to both the enemy and player, while alternating turns
 
+9 - need to make changes to all functions related to damage
 
 FINISHED:
 
@@ -34,3 +35,6 @@ these ranges may vary
 () easy and medium bosses can do all 3 whereas hard bosses can only do heavy hits and the one hit, so the range for hard bosses shall be limited to 40-100, but to keep it fair the boss shall have a 50% chance of missing the attack (and the player also has the option to dodge an attack)
 
 3 - There should be any amount of opponents, but for now lets limit it to 14: 3 easy, 3 medium, 3 hard, and 5 bosses
+
+8.1 - need to figure out how to access the code for the player's/enemy's/boss's health.
+8.2 - then i need to store those values (excluding the player's health) in a 2d dictionary as we are facing multiple enemies and bosses.

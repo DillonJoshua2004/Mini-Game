@@ -1,9 +1,10 @@
 # basic class to create other classes from.
+
 class character:
 
-	name = None
-	hp = None
-	mp = None
+	name = 0.0
+	hp = 0.0
+	mp = 0.0
 	
 	def __init__(self, name, hp, mp):
 		self.name = name
@@ -26,7 +27,7 @@ class player(character):
 
 	def __init__(self, name):
 		self.name = name
-		self.hp = 10
+		self.hp = 20
 		self.mp = 100
 
 	def nicely(self):
@@ -40,7 +41,7 @@ print() # the random prints are just to separate whats printed out """
 
 
 class weak_enemy(character):
-	type = None # whether they are vampires or orcs or dragons, etc. Default: goblin
+	type = None # whether they are vampires or orcs or dragons, etc.
 	
 	def __init__(self, name, type):
 		self.name = name

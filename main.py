@@ -2,7 +2,7 @@ import time, os
 import random as rndm
 from characters import *
 
-# before editing the program read the notes.txt file, which will be updated from time to time
+# before editing the program read the notes.txt file, which will be updated from time to time.
 
 
 def boss_dmg(health):

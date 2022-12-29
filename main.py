@@ -4,19 +4,12 @@ from characters import *
 
 # before editing the program read the notes.txt file, which will be updated from time to time
 
-enemies = {
- "weak": {"Goblin", "Zombie", "Turdle"},
- "medium": {"Orc", "Wizard", "Centaur"},
- "hard": {"Ceuthonymus", "Almops", "Euryale"},
- "boss": {"Chronos", "Zeus", "Freya", "Ares", "Hades"}
-}
-
 
 def boss_dmg(health):
 	# the damage the boss does to the player
 	damage = rndm.randint(0, 100)
-	hit_or_miss = rndm.randint(1, 2)
-	if hit_or_miss == 1:
+	hit_or_miss = rndm.randint(1, 10)
+	if hit_or_miss in [1,2,3,4]:
 		if damage == 69:
 			health = 0
 			return health
@@ -53,99 +46,94 @@ def damage_received(health, difficulty):
 		return health - 4.5
 	else:
 		return print("That Input isn't valid. Please try again.")
+		
 
-
-# the code below is to acces the hp for the player form the player class. Then, i tested the damage_received function to check if the new health value is used as the input each time.
+# example code to do damage to the player when facing a hard enemy
 """
-player_health = []
-hp = player('me').hp
-print(health)
-player_health.append(hp)
-print(player_health)
-print()
-
 dmg = damage_received(player_health[0], 'hard')
 player_health[0] = dmg
 print(player_health)
 """
 
-
-# the code below is to access the hp for the enemy from their relative classes. Now i need to test the damage_done function to check if the new health value is used as the input each time.
-# I decided to use a dictionary to store the health for enemies of each difficulty as it would be easier to access. Made it into a 2d dictionary so that i can store multiple hp values as there are multiple enemies in each catagory
-"""
-enemy_health = {
- 'weak': {''},
- 'medium': {''},
- 'hard': {''}
-}
-we_hp = weak_enemy('me', 'v').hp
-print(we_hp)
-enemy_health['weak'] = {'h1': we_hp, 'h2': we_hp, 'h3': we_hp}
-print('accessing: ', enemy_health['weak'])
-print(enemy_health)
-print()
-
-me_hp = medium_enemy('me', 'vv').hp
-print(me_hp)
-enemy_health['medium'] = {'h1': me_hp, 'h2': me_hp, 'h3': me_hp}
-print('accessing: ', enemy_health['medium'])
-print(enemy_health)
-print()
-
-se_hp = hard_enemy('me', 'vvv').hp
-print(se_hp)
-enemy_health['hard'] = {'h1': se_hp, 'h2': se_hp, 'h3': se_hp}
-print('accessing: ', enemy_health['hard'])
-print(enemy_health)
-print()
-"""
-
 # the code below is to deal damage to the enemy using the damage_done function
 """
-dmg = damage_done(enemy_health['weak'])
-enemy_health['weak'] = dmg
+dmg = damage_done(enemy_health['weak']['h1'])
+enemy_health['weak']['h1'] = dmg
+print(enemy_health)
+"""
+
+# the code below is to deal damage to the boss using the damage_done function
+"""
+dmg = damage_done(enemy_health['boss']['h1'])
+enemy_health['boss']['h1'] = dmg
 print(enemy_health)
 print()
 """
 
 
+# initialising the variable for the player
+player_health = []
+p1 = player(input("Enter you character\'s name: "))
+hp = p1.hp
+print('Player health:', hp) # testing
+player_health.append(hp)
+print('Array with the player\'s health stored: ', player_health) # testing
+
+# dictionary to sore the enemies' hp
+enemy_health = {
+	'weak': {''},
+	'medium': {''},
+	'hard': {''},
+	'boss': {''}
+}
+
+# initialising the variables for the enemies and their hp's
+we1 = weak_enemy('Goblin', "Goblin")
+we2 = weak_enemy('Zombie', "Zombie")
+we3 = weak_enemy('Turdle', "Turdle")
+me1 = medium_enemy('Orc', "Orc")
+me2 = medium_enemy('Wizard', "Wizard")
+me3 = medium_enemy('Centaur', "Centaur")
+se1 = hard_enemy('Ceuthonymus', "Spirit")
+se2 = hard_enemy('Almops', "Giant")
+se3 = hard_enemy('Euryale', "Gorgon")
+b1 = boss('Apollo', 1000, 500, "Greek God")
+b2 = boss('Hades', 1500, 600, 'Greek God')
+b3 = boss('Ares', 2000, 700, 'Greek God')
+b4 = boss('Zeus', 2500, 800, 'Greek God')
+b5 = boss('Chronos', 3000, 1000, 'Greek God')
+
+enemy_health['weak'] = {'Goblin': we1.hp, 'Zombie': we2.hp, 'Turdle': we3.hp}
+enemy_health['medium'] = {'Orc': me1.hp, 'Wizard': me2.hp, 'Centaur': me3.hp}
+enemy_health['hard'] = {'Ceuthonymus': se1.hp, 'Almops': se2.hp, 'Euryale': se3.hp}
+enemy_health['boss'] = {'Apollo': b1.hp, 'Hades': b2.hp, 'Ares': b3.hp, 'Zeus': b4.hp, 'Chronos': b5.hp}
 
 
-exit()  # this will just be here until i finish testing my code for the damage
+print(enemy_health) # testing
+print('Weak Enemy (name: health)', enemy_health['weak']) # testing
+print('Goblin health:', enemy_health['weak']['Goblin']) # testing
 
-# basic loop to start the game
+exit()
+
+# basic loop to start the game and for the battles
 while True:
 	print("Initialising Game")
 	time.sleep(1)
 	os.system("clear")
-	# need to write the rest of the story code here
-	# code for meeting and facing a WEAK enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a WEAK enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a WEAK enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a WEAK enemy
-	# need to write the rest of the story code here
-	# need to write the rest of the story code here
-	# code for meeting and facing a BOSS
-	# code for meeting and facing a MEDIUM enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a MEDIUM enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a MEDIUM enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a MEDIUM enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a BOSS
-	# need to write the rest of the story code here
-	# code for meeting and facing a BOSS
-	# need to write the rest of the story code here
-	# code for meeting and facing a BOSS
-	# code for meeting and facing a HARD enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a HARD enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a HARD enemy
-	# need to write the rest of the story code here
-	# code for meeting and facing a BOSS
+	print(f"First battle is against {we1.name}")
+	"""
+	print(f"Second battle is against {we2.name}")
+	print(f"Third battle is against {we3.name}")
+	print(f"FIRST BOSS BATTLE\nYour Enemy is {b1.name}")
+	print(f"Fourth battle is against {me1.name}")
+	print(f"Fifth battle is against {me2.name}")
+	print(f"Sixth battle is against {me3.name}")
+	print(f"SECOND BOSS BATTLE\nYour Enemy is {b2.name}")
+	print(f"THIRD BOSS BATTLE\nYour Enemy is {b3.name}")
+	print(f"Seventh battle is against {se1.name}")
+	print(f"Eigth battle is against {se2.name}")
+	print(f"Ninth battle is against {se3.name}")
+	print(f"FOURTH BOSS BATTLE\nYour Enemy is {b4.name}")
+	print(f"FIFTH BOSS BATTLE\nYour Enemy is {b5.name}")
+	"""
+	# Commenting the rest of the code for now since i still need to make changes to the way the damage functions work

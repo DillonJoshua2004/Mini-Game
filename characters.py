@@ -2,9 +2,9 @@
 
 class character:
 
-	name = 0.0
-	hp = 0.0
-	mp = 0.0
+	name = 0
+	hp = 0
+	mp = 0
 	
 	def __init__(self, name, hp, mp):
 		self.name = name
@@ -15,14 +15,6 @@ class character:
 	def nicely(self):
 		print(f"""Name: {self.name}\nHealth: {self.hp}\nMagic Power: {self.mp}""")
 
-	def isAlive(self):
-		if self.hp <= 0:
-			print(f"{self.name} has died")
-			return False
-		else:
-			print(f"{self.name} lives on!")
-			return True
-
 class player(character):
 
 	def __init__(self, name):
@@ -32,6 +24,17 @@ class player(character):
 
 	def nicely(self):
 		print(f"""Name: {self.name}\nHealth: {self.hp}\nMagic Power: {self.mp}""")
+
+	"""
+ 	useless class, or i am just dum and dont know how to supply the new hp to the function
+  	def isAlive(self):
+		if self.hp <= 0:
+			print(f"{self.name} has died")
+			return False
+		else:
+			print(f"{self.name} lives on!")
+			return True
+   	"""
 
 
 """player1 = player(input("Enter your characters name: ")) # testing

@@ -2,29 +2,36 @@ import time, os
 import random as rndm
 from characters import *
 
-# before editing the program read the notes.txt file, which will be updated from time to time.
+# before editing the program read the notes.txt file, which will be updated from time to time
 
 
-def boss_dmg(health):
-	# the damage the boss does to the player
+def boss_dmg(health, mp):
+	"""
+	the damage the boss does to the player,
+ 	i decided to take the mp of the boss as an extra input
+	to set a threshold for mp for the boss to be able to do
+ 	a certain amount of damage
+	"""
 	damage = rndm.randint(0, 100)
 	hit_or_miss = rndm.randint(1, 10)
 	if hit_or_miss in [1,2,3,4]:
-		if damage == 69:
+		if damage == 69 and mp >= 750:
 			health = 0
 			return health
 		elif damage <= 50:
 			return health - (health * 0.15)
 		elif damage >= 51 and damage <= 68 or damage >= 70 and damage <= 79:
 			return health - (health * 0.30)
-		elif damage >= 80:
+		elif damage >= 80 and mp >= 750:
 			return health - (health * 0.40)
 	else:
 		return print("Attack Missed")
 
 
 def damage_done(health):
-	# the damage the player does to the opponent
+	"""
+ 	the damage the player does to the opponent
+	"""
 	damage = rndm.randint(0, 18)
 	if damage in [0, 1, 2, 3, 4, 5]:
 		return health - (health * 0.08)
@@ -37,39 +44,17 @@ def damage_done(health):
 
 
 def damage_received(health, difficulty):
-	# the damage enemies do to the player
-	if difficulty == "easy":
+	"""
+	the damage enemies do to the player
+	"""
+	if difficulty == "weak":
 		return health - 1.5
 	elif difficulty == "medium":
 		return health - 3
-	elif difficulty == "hard":
+	elif difficulty == "strong":
 		return health - 4.5
 	else:
 		return print("That Input isn't valid. Please try again.")
-		
-
-# example code to do damage to the player when facing a hard enemy
-"""
-dmg = damage_received(player_health[0], 'hard')
-player_health[0] = dmg
-print(player_health)
-"""
-
-# the code below is to deal damage to the enemy using the damage_done function
-"""
-dmg = damage_done(enemy_health['weak']['h1'])
-enemy_health['weak']['h1'] = dmg
-print(enemy_health)
-"""
-
-# the code below is to deal damage to the boss using the damage_done function
-"""
-dmg = damage_done(enemy_health['boss']['h1'])
-enemy_health['boss']['h1'] = dmg
-print(enemy_health)
-print()
-"""
-
 
 # initialising the variable for the player
 player_health = []
@@ -90,16 +75,16 @@ enemy_health = {
 # initialising the variables for the enemies and their hp's
 we1 = weak_enemy('Goblin', "Goblin")
 we2 = weak_enemy('Zombie', "Zombie")
-we3 = weak_enemy('Turdle', "Turdle")
+we3 = weak_enemy('Turdle', "Turd")
 me1 = medium_enemy('Orc', "Orc")
 me2 = medium_enemy('Wizard', "Wizard")
 me3 = medium_enemy('Centaur', "Centaur")
 se1 = hard_enemy('Ceuthonymus', "Spirit")
 se2 = hard_enemy('Almops', "Giant")
 se3 = hard_enemy('Euryale', "Gorgon")
-b1 = boss('Apollo', 1000, 500, "Greek God")
-b2 = boss('Hades', 1500, 600, 'Greek God')
-b3 = boss('Ares', 2000, 700, 'Greek God')
+b1 = boss('Apollo', 1000, 550, "Greek God")
+b2 = boss('Hades', 1500, 550, 'Greek God')
+b3 = boss('Ares', 2000, 750, 'Greek God')
 b4 = boss('Zeus', 2500, 800, 'Greek God')
 b5 = boss('Chronos', 3000, 1000, 'Greek God')
 
@@ -110,8 +95,32 @@ enemy_health['boss'] = {'Apollo': b1.hp, 'Hades': b2.hp, 'Ares': b3.hp, 'Zeus': 
 
 
 print(enemy_health) # testing
-print('Weak Enemy (name: health)', enemy_health['weak']) # testing
+print('Weak Enemy', enemy_health['weak']) # testing
 print('Goblin health:', enemy_health['weak']['Goblin']) # testing
+time.sleep(3)
+os.system("clear")
+
+# code for example for the first battle the player will have
+p1.nicely()
+print("First enemy")
+we1.nicely()
+
+# this works, but what i need to do is adjust the damage functions to make it more fair for the player, as it's currently unbalanced
+while player_health[0] > 0:
+	dmg_enemy = damage_done(enemy_health['weak']['Goblin'])
+	enemy_health['weak']['Goblin'] = dmg_enemy
+	print()
+	print(f"{we1.name} has been hit by {p1.name}. {we1.name}\'s remaining hp is: {enemy_health['weak']['Goblin']}")
+	print()
+	dmg_player = damage_received(player_health[0], 'weak')
+	player_health[0] = dmg_player
+	print(f"{p1.name} has been hit by {we1.name}. {p1.name}\'s remaining hp is: {player_health[0]}")
+	print()
+
+
+
+
+
 
 exit()
 

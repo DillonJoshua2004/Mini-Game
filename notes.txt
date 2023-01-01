@@ -55,3 +55,24 @@ enemies = {
  "boss": {"Chronos": '', "Zeus": '', "Apollo": '', "Ares": '', "Hades": ''}
 }
 """
+
+# example code to do damage to the player when facing a hard enemy
+"""
+dmg = damage_received(player_health[0], 'hard')
+player_health[0] = dmg
+print(player_health)
+"""
+
+# the code below is to deal damage to the enemy using the damage_done function
+"""
+dmg = damage_done(enemy_health['weak']['h1'])
+enemy_health['weak']['h1'] = dmg
+print(enemy_health)
+"""
+
+# the code below is to deal damage to the player using the boss_dmg function
+"""
+dmg = boss_dmh(player_health[0], enemy_health['weak']['Ares'].mp)
+player_health[0] = dmg
+print(player_health)
+"""

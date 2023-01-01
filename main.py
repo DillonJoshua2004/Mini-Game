@@ -122,7 +122,7 @@ while player_health[0] > 0:
 
 
 
-exit()
+exit() #until testing code is finished
 
 # basic loop to start the game and for the battles
 while True:

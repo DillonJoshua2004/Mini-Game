@@ -1,4 +1,5 @@
 # basic class to create other classes from.
+# the isAlive() function has been rendered useless unless i am dum and dont know how to use it
 
 class character:
 
@@ -26,7 +27,7 @@ class player(character):
 		print(f"""Name: {self.name}\nHealth: {self.hp}\nMagic Power: {self.mp}""")
 
 	"""
- 	useless class, or i am just dum and dont know how to supply the new hp to the function
+ 	useless function, or i am just dum and dont know how to supply the new hp to the function
   	def isAlive(self):
 		if self.hp <= 0:
 			print(f"{self.name} has died")

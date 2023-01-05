@@ -3,13 +3,14 @@ WIP:
 2 - need to work on a code to allow the player to regen hp. -- code related
 (and a code to allow the player to restart from checkpoints) -- chucking the idea 'in the brackets' for another time
 
-4 - hp regen potion should restore 50% of "lost" hp (this may vary in the future), no need for a mana bar now (just leave it as mp: magic power). -- code related
-
-5 - need to figure out a method to deal damage to both the enemy and player, while alternating turns -- code related
+4 - hp regen potion should restore 50% of "lost" hp (this may vary in the future): the player's health will not reset each battle, no need for a mana bar now (just leave it as mp: magic power). -- code related
 
 6 - need to make changes to all functions related to damage -- code related
 
 7 - decided not to write a story for this as it is a simple first project (game), so i will just make it a battle simulator (sort of). I will write a story for my next game once i have gained more knowledge related to images, etc in python.
+
+9 - need to figure out a method calcualte the damage dealt between opponenets, and balance it out.
+10 - need to figure out a method to reduce the number of lines of code while being able to choose who fights the player
 
 |---------------------------------------------------------------------------------------------------------------------------------|
 |enumerate() - https://www.w3schools.com/python/ref_func_enumerate.asp?adlt=strict&toWww=1&redig=34CC26B3F09B4680B41DD10E8247F8B8 |

@@ -14,16 +14,17 @@ def boss_dmg(health, mp):
 	"""
 	damage = rndm.randint(0, 100)
 	hit_or_miss = rndm.randint(1, 10)
-	if hit_or_miss in [1,2,3,4]:
+	multiplier = rndm.uniform(0.1,0.5)
+	if hit_or_miss not in [1,2,3,4]:
 		if damage == 69 and mp >= 750:
 			health = 0
 			return health
 		elif damage <= 50:
-			return health - (health * 0.15)
-		elif damage >= 51 and damage <= 68 or damage >= 70 and damage <= 79:
-			return health - (health * 0.30)
+			return round(health - (multiplier * 6), 3)
+		elif (damage >= 51 and damage <= 68) or (damage >= 70 and damage <= 79):
+			return round(health - (multiplier * 8), 3)
 		elif damage >= 80 and mp >= 750:
-			return health - (health * 0.40)
+			return round(health - (multiplier * 10), 3)
 	else:
 		return print("Attack Missed")
 
@@ -31,14 +32,16 @@ def boss_dmg(health, mp):
 def damage_done(health):
 	"""
  	the damage the player does to the opponent
+  	the else statement basically wipes out 50% of the enemy's health
 	"""
 	damage = rndm.randint(0, 18)
+	multiplier = rndm.uniform(0.8, 1.1)
 	if damage in [0, 1, 2, 3, 4, 5]:
-		return health - (health * 0.08)
+		return round(health - (multiplier * 4), 3)
 	elif damage in [6, 7, 8, 9, 10, 11]:
-		return health - (health * 0.14)
+		return round(health - (multiplier * 7), 3)
 	elif damage in [12, 13, 14, 15, 16, 17]:
-		return health - (health * 0.18)
+		return round(health - (multiplier * 10), 3)
 	else:
 		return health - (health * 0.5)
 
@@ -47,24 +50,25 @@ def damage_received(health, difficulty):
 	"""
 	the damage enemies do to the player
 	"""
+	multiplier = rndm.uniform(0.3,0.5)
 	if difficulty == "weak":
-		return health - 1.5
+		return round(health - (5.5 * multiplier), 3)
 	elif difficulty == "medium":
-		return health - 3
+		return round(health - (6 * multiplier), 3)
 	elif difficulty == "strong":
-		return health - 4.5
+		return round(health - (7 * multiplier), 3)
 	else:
 		return print("That Input isn't valid. Please try again.")
+
+
 
 # initialising the variable for the player
 player_health = []
 p1 = player(input("Enter you character\'s name: "))
 hp = p1.hp
-print('Player health:', hp) # testing
 player_health.append(hp)
-print('Array with the player\'s health stored: ', player_health) # testing
 
-# dictionary to sore the enemies' hp
+# dictionary to store the enemies' hp
 enemy_health = {
 	'weak': {''},
 	'medium': {''},
@@ -94,35 +98,29 @@ enemy_health['hard'] = {'Ceuthonymus': se1.hp, 'Almops': se2.hp, 'Euryale': se3.
 enemy_health['boss'] = {'Apollo': b1.hp, 'Hades': b2.hp, 'Ares': b3.hp, 'Zeus': b4.hp, 'Chronos': b5.hp}
 
 
-print(enemy_health) # testing
-print('Weak Enemy', enemy_health['weak']) # testing
-print('Goblin health:', enemy_health['weak']['Goblin']) # testing
-time.sleep(3)
-os.system("clear")
-
-# code for example for the first battle the player will have
-p1.nicely()
-print("First enemy")
-we1.nicely()
 
 # this works, but what i need to do is adjust the damage functions to make it more fair for the player, as it's currently unbalanced
-while player_health[0] > 0:
-	dmg_enemy = damage_done(enemy_health['weak']['Goblin'])
-	enemy_health['weak']['Goblin'] = dmg_enemy
-	print()
-	print(f"{we1.name} has been hit by {p1.name}. {we1.name}\'s remaining hp is: {enemy_health['weak']['Goblin']}")
-	print()
-	dmg_player = damage_received(player_health[0], 'weak')
-	player_health[0] = dmg_player
-	print(f"{p1.name} has been hit by {we1.name}. {p1.name}\'s remaining hp is: {player_health[0]}")
-	print()
+# finally managed to make a function to do the battle work for me, so now i dont need to repeat these lines anymore
+def battle(player_health, type, enemy_health, enemy):
+	while player_health[0] > 0 and enemy_health > 0:
+		dmg_enemy = damage_done(enemy_health)
+		enemy_health = dmg_enemy
+		print()
+		print(f"{enemy.name} has been hit by {p1.name}. {enemy.name}\'s remaining hp is: {enemy_health}")
+		print()
+		if enemy_health > 0:
+			dmg_player = damage_received(player_health[0], type)
+			player_health[0] = dmg_player
+			print(f"{p1.name} has been hit by {enemy.name}. {p1.name}\'s remaining hp is: {player_health[0]}")
+			print()
+		else:
+			break
+
+	
+battle(player_health, 'weak', enemy_health['weak']['Goblin'], we1)
 
 
-
-
-
-
-exit() #until testing code is finished
+exit()
 
 # basic loop to start the game and for the battles
 while True:

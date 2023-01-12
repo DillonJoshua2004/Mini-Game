@@ -88,7 +88,7 @@ class hard_enemy(character):
 
 	def __init__(self, name, type):
 		self.name = name
-		self.hp = 222
+		self.hp = 200
 		self.mp = 333
 		self.type = type
 

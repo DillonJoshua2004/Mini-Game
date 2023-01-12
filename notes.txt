@@ -1,16 +1,15 @@
 WIP:
 
-2 - need to work on a code to allow the player to regen hp. -- code related
-(and a code to allow the player to restart from checkpoints) -- chucking the idea 'in the brackets' for another time
+2 - need to work on a code to allow the player to regen hp -- code related
+
+2.2 - and to do this i need to allow the player to choose when to start the next battle -- code related
+
+2.3 - and also structure it so that it goes in 'rounds'. So the player can choose during defense to either heal or dodge, and heal is limited to a certain number of potions -- code related
 
 4 - hp regen potion should restore 50% of "lost" hp (this may vary in the future): the player's health will not reset each battle, no need for a mana bar now (just leave it as mp: magic power). -- code related
 
-6 - need to make changes to all functions related to damage -- code related
-
-7 - decided not to write a story for this as it is a simple first project (game), so i will just make it a battle simulator (sort of). I will write a story for my next game once i have gained more knowledge related to images, etc in python.
-
 9 - need to figure out a method calcualte the damage dealt between opponenets, and balance it out.
-10 - need to figure out a method to reduce the number of lines of code while being able to choose who fights the player
+
 
 |---------------------------------------------------------------------------------------------------------------------------------|
 |enumerate() - https://www.w3schools.com/python/ref_func_enumerate.asp?adlt=strict&toWww=1&redig=34CC26B3F09B4680B41DD10E8247F8B8 |
@@ -42,6 +41,17 @@ these ranges may vary
 8.1 - need to figure out how to access the code for the player's/enemy's/boss's health.
 8.2 - then i need to store those values (excluding the player's health) in a 2d dictionary as we are facing multiple enemies and bosses.
 
+7 - decided not to write a story for this as it is a simple first project (game), so i will just make it a battle simulator (sort of). I will write a story for my next game once i have gained more knowledge related to images, etc in python.
+
+10 - need to figure out a method to reduce the number of lines of code while being able to choose who fights the player
+
+2.1 - and a code to allow the player to restart from checkpoints -- chucking the idea for another time
+
+6 - need to make changes to all functions related to damage -- code related
+
+11 - removed the boss_dmg function and just added it to the damage_received function
+
+12 - created an inventory to store healing potions, created two functions: one for healing and the other once to decide whether they get a potion or not after a fight.
 
 
 
@@ -77,3 +87,22 @@ dmg = boss_dmh(player_health[0], enemy_health['weak']['Ares'].mp)
 player_health[0] = dmg
 print(player_health)
 """
+
+# removed this code since i was able to make a function to do the battle
+print(f"First battle is against {we1.name}")
+	"""
+	print(f"Second battle is against {we2.name}")
+	print(f"Third battle is against {we3.name}")
+	print(f"FIRST BOSS BATTLE\nYour Enemy is {b1.name}")
+	print(f"Fourth battle is against {me1.name}")
+	print(f"Fifth battle is against {me2.name}")
+	print(f"Sixth battle is against {me3.name}")
+	print(f"SECOND BOSS BATTLE\nYour Enemy is {b2.name}")
+	print(f"THIRD BOSS BATTLE\nYour Enemy is {b3.name}")
+	print(f"Seventh battle is against {se1.name}")
+	print(f"Eigth battle is against {se2.name}")
+	print(f"Ninth battle is against {se3.name}")
+	print(f"FOURTH BOSS BATTLE\nYour Enemy is {b4.name}")
+	print(f"FIFTH BOSS BATTLE\nYour Enemy is {b5.name}")
+	"""
+	# Commenting the rest of the code for now since i still need to make changes to the way the damage functions work

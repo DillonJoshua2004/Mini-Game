@@ -1,14 +1,6 @@
 WIP:
 
-2 - need to work on a code to allow the player to regen hp -- code related
-
-2.2 - and to do this i need to allow the player to choose when to start the next battle -- code related
-
-2.3 - and also structure it so that it goes in 'rounds'. So the player can choose during defense to either heal or dodge, and heal is limited to a certain number of potions -- code related
-
-4 - hp regen potion should restore 50% of "lost" hp (this may vary in the future): the player's health will not reset each battle, no need for a mana bar now (just leave it as mp: magic power). -- code related
-
-9 - need to figure out a method calcualte the damage dealt between opponenets, and balance it out.
+none i think...       .______________.
 
 
 |---------------------------------------------------------------------------------------------------------------------------------|
@@ -36,26 +28,43 @@ these ranges may vary
 () - 0-50 shall just be 15% of the players hp, 51-79 (excluding 69) will do 30%, and anything 80 and above does 40%
 () easy and medium bosses can do all 3 whereas hard bosses can only do heavy hits and the one hit, so the range for hard bosses shall be limited to 40-100, but to keep it fair the boss shall have a 40% chance of missing the attack (and the player also has the option to dodge an attack)
 
-3 - There should be any amount of opponents, but for now lets limit it to 14: 3 easy, 3 medium, 3 hard, and 5 bosses
 
-8.1 - need to figure out how to access the code for the player's/enemy's/boss's health.
-8.2 - then i need to store those values (excluding the player's health) in a 2d dictionary as we are facing multiple enemies and bosses.
-
-7 - decided not to write a story for this as it is a simple first project (game), so i will just make it a battle simulator (sort of). I will write a story for my next game once i have gained more knowledge related to images, etc in python.
-
-10 - need to figure out a method to reduce the number of lines of code while being able to choose who fights the player
+2 - need to work on a code to allow the player to regen hp -- code related
 
 2.1 - and a code to allow the player to restart from checkpoints -- chucking the idea for another time
 
-6 - need to make changes to all functions related to damage -- code related
+2.2 - and to do this i need to allow the player to choose when to start the next battle -- code related
 
-11 - removed the boss_dmg function and just added it to the damage_received function
+2.3 - and also structure it so that it goes in 'rounds'. So the player can choose during defense to either heal or dodge, and heal is limited to a certain number of potions -- code related
 
-12 - created an inventory to store healing potions, created two functions: one for healing and the other once to decide whether they get a potion or not after a fight.
-
-
+2.4 - update: added the two health regen function to the battle function so that exactly when a battle ends the system calls those functions, and once the player has decided to heal or not, the game continues with their current hp.
 
 
+3 - There should be any amount of opponents, but for now lets limit it to 14: 3 easy, 3 medium, 3 hard, and 5 bosses
+
+4 - hp regen potion should restore 50% of "lost" hp (this may vary in the future): the player's health will not reset each battle, no need for a mana bar now (just leave it as mp: magic power). -- code related
+
+5 - need to make changes to all functions related to damage -- code related
+
+6 - decided not to write a story for this as it is a simple first project (game), so i will just make it a battle simulator (sort of). I will write a story for my next game once i have gained more knowledge related to images, etc in python.
+
+
+7 - need to figure out how to access the code for the player's/enemy's/boss's health.
+
+7.1 - then i need to store those values (excluding the player's health) in a 2d dictionary as we are facing multiple enemies and bosses.
+
+
+8 - need to figure out a method calcualte the damage dealt between opponenets, and balance it out.
+
+9 - need to figure out a method to reduce the number of lines of code while being able to choose who fights the player
+
+10 - removed the boss_dmg function and just added it to the damage_received function
+
+11 - created an inventory to store healing potions, created two functions: one for healing and the other once to decide whether they get a potion or not after a fight.
+
+
+# old code that was removed from the program is below
+________________________________________________________________________________________________________
 "Code that i didn't want to use for storing the health as i thought it would take up more lines"
 # code for the health and names of the enemies and bosses, might not use this
 """

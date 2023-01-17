@@ -5,23 +5,30 @@ from characters import *
 # before editing the program read the notes.txt file, which will be updated from time to time
 
 
-"""
 # function to be used after a battle to decide whether they get a potion for defeating an enemy or not
-# will keep it like this until i've finished testing it
-
 def give_potion(health):
-	chance = random.randint(1,100)
+	chance = rndm.randint(1,100)
 	if chance <= 24 or health <= (p1.hp * 0.28):
 		inventory.append('potion')
 
 # function to use a potion to heal one's self, this will be asked after evey 3-4 rounds
 def use_potion(choice, no_of_potions, current_health):
-	if choice[0].lower() == 'y':
+	if (choice[0].lower() == 'y' and player_health[0] > 0) or choice.lower() == "urgent":
 		inventory.remove('potion')
 		if no_of_potions > 0:
 			if current_health <= 0.5 * p1.hp:
-				current_health *= 0.5
-"""
+				current_health += (0.5* p1.hp)
+				player_health.pop(0)
+				player_health.append(current_health)
+				print(f"Health restored to {player_health[0]}")
+			elif current_health <= 0.75*p1.hp:
+				current_health += (0.15* p1.hp)
+				player_health.pop(0)
+				player_health.append(current_health)
+				print(f"Health restored to {player_health[0]}")
+			else:
+				print("Can\'t Restore HP when health is above 75%")
+	
 		
 def damage_done(health):
 	"""
@@ -30,7 +37,7 @@ def damage_done(health):
    	if none of the other conditions are met
 	"""
 	damage = rndm.randint(0, 18)
-	multiplier = rndm.uniform(0.8, 1.1)
+	multiplier = rndm.uniform(0.75, 1.35)
 	if damage in [0, 1, 2, 3, 4, 5]:
 		return round(health - (multiplier * 4), 3)
 	elif damage in [6, 7, 8, 9, 10, 11]:
@@ -50,9 +57,9 @@ def damage_received(health, difficulty, mp):
 	if difficulty == "weak":
 		return round(health - (5.5 * multiplier), 3)
 	elif difficulty == "medium":
-		return round(health - (6 * multiplier), 3)
+		return round(health - (6.5 * multiplier), 3)
 	elif difficulty == "strong":
-		return round(health - (7 * multiplier), 3)
+		return round(health - (7.3 * multiplier), 3)
 	elif difficulty == "boss":
 		if mp >= 750 and hit_or_miss not in [1,2,3,4,5,6]:
 			return round(health - (8.5 * multiplier), 3)
@@ -101,12 +108,10 @@ enemy_health['hard'] = {'Ceuthonymus': se1.hp, 'Almops': se2.hp, 'Euryale': se3.
 enemy_health['boss'] = {'Apollo': b1.hp, 'Hades': b2.hp, 'Ares': b3.hp, 'Zeus': b4.hp, 'Chronos': b5.hp}
 
 
-
-# this works, but what i need to do is adjust the damage functions to make it more fair for the player, as it's currently unbalanced
 # finally managed to make a function to do the battle work for me, so now i dont need to repeat these lines anymore
 def battle(player_health, type, enemy_health, enemy, mp):
 	while player_health[0] > 0 and enemy_health > 0:
-		time.sleep(2.5)
+		time.sleep(1.5)
 		os.system('clear')
 		dmg_enemy = damage_done(enemy_health)
 		enemy_health = dmg_enemy
@@ -119,23 +124,41 @@ def battle(player_health, type, enemy_health, enemy, mp):
 			print(f"{p1.name} has been hit by {enemy.name}. {p1.name}\'s remaining hp is: {player_health[0]}")
 			print()
 		else:
+			give_potion(player_health[0])
+			print(inventory)
+			print(f"Current Health is {player_health[0]}")
+			use = input("Do you want to use a potion before heading in to the next battle? (yes/no): ")
+			use_potion(use, len(inventory), player_health[0])
 			break
 
-"""
-testing out the function. it works but i need to work on adding the health prompt and the actual healing command to the code. once that's done im finished
 
-battle(player_health, 'weak', enemy_health['weak']['Goblin'], we1, we1.mp)
-battle(player_health, 'medium', enemy_health['medium']['Wizard'], me2, me2.mp)
-battle(player_health, 'hard', enemy_health['hard']['Ceuthonymus'], se1, se1.mp)
-battle(player_health, 'boss', enemy_health['boss']['Chronos'], b5, b5.mp)
-"""
-
-exit() # keeping this here for now until testing is done
-
-
-# basic loop to start the game and for the battles
 while True:
+	# basic loop to start the game and for the battles
 	print("Initialising Game")
 	time.sleep(1.18)
 	os.system("clear")
+	
+	battle(player_health, 'weak', enemy_health['weak']['Goblin'], we1, we1.mp)
+	battle(player_health, 'weak', enemy_health['weak']['Zombie'], we2, we2.mp)
+	battle(player_health, 'weak', enemy_health['weak']['Turdle'], we3, we3.mp)
+	battle(player_health, 'boss', enemy_health['boss']['Apollo'], b1, b1.mp)
+	inventory.append('potion')
+	use_potion('urgent', len(inventory), player_health[0])
+	battle(player_health, 'boss', enemy_health['boss']['Hades'], b2, b2.mp)
+
+	battle(player_health, 'medium', enemy_health['medium']['Orc'], me1, me1.mp)
+	battle(player_health, 'medium', enemy_health['medium']['Wizard'], me2, me2.mp)
+	battle(player_health, 'medium', enemy_health['medium']['Centaur'], me3, me3.mp)
+	battle(player_health, 'boss', enemy_health['boss']['Ares'], b3, b3.mp)
+	inventory.append('potion')
+	use_potion('urgent', len(inventory), player_health[0])
+	battle(player_health, 'boss', enemy_health['boss']['Zeus'], b4, b4.mp)
+	
+	battle(player_health, 'hard', enemy_health['hard']['Ceuthonymus'], se1, se1.mp)
+	battle(player_health, 'hard', enemy_health['hard']['Almops'], se2, se2.mp)
+	battle(player_health, 'hard', enemy_health['hard']['Euryale'], se3, se3.mp)
+	battle(player_health, 'boss', enemy_health['boss']['Zeus'], b4, b4.mp)
+	inventory.append('potion')
+	use_potion('urgent', len(inventory), player_health[0])
+	battle(player_health, 'boss', enemy_health['boss']['Chronos'], b5, b5.mp)
 	

@@ -20,7 +20,7 @@ class player(character):
 
 	def __init__(self, name):
 		self.name = name
-		self.hp = 20
+		self.hp = 38
 		self.mp = 100
 
 	def nicely(self):

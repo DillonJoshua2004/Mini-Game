@@ -1,5 +1,4 @@
-# basic class to create other classes from.
-# the isAlive() function has been rendered useless unless i am dum and dont know how to use it
+# basic/parent class to create other classes from.
 
 class character:
 
@@ -26,22 +25,6 @@ class player(character):
 	def nicely(self):
 		print(f"""Name: {self.name}\nHealth: {self.hp}\nMagic Power: {self.mp}""")
 
-	"""
- 	useless function, or i am just dum and dont know how to supply the new hp to the function
-  	def isAlive(self):
-		if self.hp <= 0:
-			print(f"{self.name} has died")
-			return False
-		else:
-			print(f"{self.name} lives on!")
-			return True
-   	"""
-
-
-"""player1 = player(input("Enter your characters name: ")) # testing
-player1.nicely()
-print(player1.isAlive())
-print() # the random prints are just to separate whats printed out """
 
 
 class weak_enemy(character):
@@ -56,19 +39,6 @@ class weak_enemy(character):
 	def nicely(self):
 		print(f"""Name: {self.name}\nHealth: {self.hp}\nMagic Power: {self.mp}\nType: {self.type}""")
 
-
-"""goblin = weak_enemy("Goblin", "Midg3t Goblin") # testing
-goblin.nicely()
-print(goblin.isAlive())
-print()
-zombie = weak_enemy("Zombie", "Cr@ckh3ad Zombie") # testing
-zombie.nicely()
-print(zombie.isAlive())
-print()
-turdle = weak_enemy("Turdle", "Turd") # testing
-turdle.nicely()
-print(turdle.isAlive())
-print()"""
 
 class medium_enemy(character):
 	type = None
@@ -107,9 +77,4 @@ class boss(character):
 
 	def nicely(self):
 		print(f"""Name: {self.name}\nHealth: {self.hp}\nMagic Power: {self.mp}\nType: {self.type}""")
-
-"""boss1 = boss("uncle gi", 2000, 20000, "couch potato") # testing
-boss1.nicely()
-print(boss1.isAlive())
-print()"""
 
